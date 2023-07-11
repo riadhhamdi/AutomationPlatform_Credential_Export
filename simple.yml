@@ -20,7 +20,7 @@
       src: python-script.py
       dest: /tmp/python-script.py
   - name: show up credential for every cred detected
-    ansible.builtin.include_tasks: cred_show.yml
+    include_tasks: cred_show.yml
     vars:
       mycred: "{{item}}"
     loop: "{{all_credentials.json.results | map(attribute='id') | list}}"

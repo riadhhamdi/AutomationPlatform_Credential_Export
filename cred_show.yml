@@ -1,0 +1,9 @@
+  - name: Get Credentials output 
+    shell: "awx-manage  shell_plus --quiet-load --plain  -c 'exec(open(\"/tmp/python-script.py\").read())'"
+    environment:
+      CRED_ID: "{{mycred}}"
+    register: cred_clear
+    failed_when: false 
+  - name: Get the specified cred
+    debug: 
+      var: cred_clear
