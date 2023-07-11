@@ -15,7 +15,7 @@
     set_fact:
       target_credential:
         name: "{{raw_credential.name}}_1"
-        organization: "{{raw_credential.organization | default('Default')}}"
+        organization: "Default"
         description: "{{raw_credential.description | default('Imported automatically')}}"
         credential_type: "{{raw_credential.summary_fields.credential_type.name}}"
         inputs: "{{raw_credential.inputs | default({}) | combine(unencrypted_inputs)}}"
