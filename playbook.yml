@@ -29,9 +29,6 @@
   - name: Get all credentials sensitive data
     debug: 
       var: all_creds_data.results | map(attribute='stdout_lines') | list 
-  - name: Get all credentials sensitive data full
-    debug: 
-      var: all_creds_data.results  
   - name: All creds with cred id 
     template:
       dest: /tmp/all_creds_file
