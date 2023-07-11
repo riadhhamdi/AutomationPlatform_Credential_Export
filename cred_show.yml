@@ -7,3 +7,9 @@
   - name: Get the specified cred
     debug: 
       var: cred_clear
+  - name: Get the specified cred 2
+    debug: 
+      var: cred_clear.stdout | from_json  
+  - name: Get the specified cred 3
+    debug: 
+      var: cred_clear.stdout | from_yaml 
