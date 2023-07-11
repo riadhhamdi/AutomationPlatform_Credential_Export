@@ -29,3 +29,11 @@
   - name: show target credential 
     debug: 
       var: controller_credentials
+  - name: run creation on target
+    include_role:
+      name: infra.controller_configuration.credentials
+    vars: 
+      controller_hostname: "{{target_aap_host}}"
+      controller_username: "{{target_aap_user}}"
+      controller_password: "{{target_aap_pass}}"
+    
