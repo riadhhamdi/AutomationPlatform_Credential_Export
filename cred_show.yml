@@ -7,10 +7,11 @@
   - name: Get the specified cred
     debug: 
       var: cred_clear
-  - name: Get the specified cred 2
-    debug: 
-      var: cred_clear.stdout | from_json  
-    ignore_errors: true
   - name: Get the specified cred 3
     debug: 
-      var: (cred_clear.stdout | from_yaml).password
+      var: cred_clear.stdout | from_yaml
+  - name: assign value to dictionary 
+    set_fact:
+      credentials_unprotected | combine( { mycred: unprotected_data } )
+    vars: 
+      unprotected_data: cred_clear.stdout | from_yaml

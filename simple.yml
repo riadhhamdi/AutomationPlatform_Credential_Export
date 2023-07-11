@@ -19,6 +19,9 @@
     copy:
       src: python-script.py
       dest: /tmp/python-script.py
+  - name: Initialize a new dict for the cleared credentials 
+    set_fact:
+      credentials_unprotected: {}
   - name: show up credential for every cred detected
     include_tasks: cred_show.yml
     vars:
