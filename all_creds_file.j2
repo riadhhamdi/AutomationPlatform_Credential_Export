@@ -3,5 +3,5 @@ creds:
 {% for cred in all_creds_data.results %}
   - cred_id: {{cred.item}}
     data: 
-      {{cred.stdout | from_yaml}}
+      {{cred.stdout | from_yaml | to_yaml}}
 {% endfor %}
