@@ -4,12 +4,12 @@
       CRED_ID: "{{mycred}}"
     register: cred_clear
     failed_when: false 
-  - name: Get the specified cred
-    debug: 
-      var: cred_clear
-  - name: Get the specified cred 3
-    debug: 
-      var: cred_clear.stdout | from_yaml
+  # - name: Get the specified cred
+  #   debug: 
+  #     var: cred_clear
+  # - name: Get the specified cred 3
+  #   debug: 
+  #     var: cred_clear.stdout | from_yaml
   - name: assign value to dictionary 
     set_fact:
       credentials_unprotected: "{{credentials_unprotected | combine(__temp_dict)}}"
@@ -17,10 +17,10 @@
       __unprotected_data: "{{cred_clear.stdout | from_yaml}}"
       __temp_dict: "{{ {mycred : __unprotected_data} }}"
 
-  - debug:
-      var: credentials_unprotected[mycred]
-  - debug:
-      var: dict(credentials_unprotected[mycred]) 
+  # - debug:
+  #     var: credentials_unprotected[mycred]
+  # - debug:
+  #     var: dict(credentials_unprotected[mycred]) 
   
   # - name: show the value of the dict 
   #   debug: 

@@ -5,9 +5,9 @@
     set_fact: 
       raw_credential: "{{all_credentials.json.results | selectattr('id' , 'equalto', mycred)}}"
     
-  - name: display raw credential
-    debug:
-      var: raw_credential
+  # - name: display raw credential
+  #   debug:
+  #     var: raw_credential
   - name: Create a temporary dictionary for target credential 
     set_fact:
       target_credential:
