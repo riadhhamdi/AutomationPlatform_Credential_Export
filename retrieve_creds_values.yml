@@ -16,9 +16,9 @@
     vars: 
       __unprotected_data: "{{cred_clear.stdout | from_yaml}}"
       __temp_dict: "{{ {mycred : __unprotected_data} }}"
-  - name: show the value of the dict 
-    debug: 
-      var: credentials_unprotected
-  - name: get a specific password 
-    debug: 
-      var: credentials_unprotected.5.password
+  # - name: show the value of the dict 
+  #   debug: 
+  #     var: credentials_unprotected
+  # - name: get a specific password 
+  #   debug: 
+  #     var: credentials_unprotected.5.password
