@@ -12,6 +12,6 @@
       var: cred_clear.stdout | from_yaml
   - name: assign value to dictionary 
     set_fact:
-      credentials_unprotected | combine( { mycred: unprotected_data } )
+      credentials_unprotected: "{{credentials_unprotected | combine( { mycred: unprotected_data } )}}"
     vars: 
       unprotected_data: cred_clear.stdout | from_yaml
