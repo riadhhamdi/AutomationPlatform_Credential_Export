@@ -1,0 +1,27 @@
+- hosts: localhost 
+  tasks:
+  - name: trigger all the credentials 
+    uri: 
+      url: https://{{aap_hostname}}/api/v2/credentials/ 
+      user: "{{aap_username}}"
+      password: "{{aap_password}}"
+      method: GET
+      force_basic_auth: true 
+      validate_certs: false 
+    register: all_credentials
+  - name: Show all credentials 
+    debug: 
+      var: all_credentials
+  - name: Get all the IDs 
+    debug:
+      var: all_credentials.json.results | map(attribute="id") | list  
+  - name: Copy awx-manage shell_plus commands to a script 
+    copy:
+      src: python-script.py
+      dest: /tmp/python-script.py
+- name: show up credential for every cred detected
+  ansible.builtin.include: cred_show.yaml
+  vars:
+    mycred: "{{item}}"
+  loop: "{{all_credentials.json.results | map(attribute='id') | list}}"
+    
