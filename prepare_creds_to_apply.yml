@@ -8,3 +8,15 @@
   - name: display raw credential
     debug:
       var: raw_credential
+  - name: Create a temporary dictionary for target credential 
+    set_fact:
+      target_credential:
+        name: raw_credential.name
+        description: raw_credential.description | default('Imported automatically')
+        credential_type: raw_credential.summary_fields.credential_type.name
+        inputs: "{{raw_credential.inputs | combine(unencrypted_inputs)}}"
+    vars:
+      unencrypted_inputs: "{{ credentials_unprotected[mycred] }}"
+  - name: Show the credential to be created 
+    debug:
+      var: target_credential
