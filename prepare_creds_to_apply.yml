@@ -1,3 +1,6 @@
+  - name: show iteration 
+    debug:
+      var: mycred
   - name: Initialize a new dict for the cleared credentials 
     set_fact:
       target_credential: {}
