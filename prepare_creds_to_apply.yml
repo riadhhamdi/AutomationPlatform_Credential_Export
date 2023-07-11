@@ -23,3 +23,9 @@
   - name: Show the credential to be created 
     debug:
       var: target_credential
+  - name: Add the cred to the list 
+    set_fact: 
+      controller_credentials: "{{controller_credentials + [target_credential]}}"
+  - name: show target credential 
+    debug: 
+      var: controller_credentials
