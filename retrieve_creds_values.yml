@@ -19,6 +19,9 @@
 
   - debug:
       var: credentials_unprotected[mycred]
+  - debug:
+      var: dict(credentials_unprotected[mycred]) 
+  
   # - name: show the value of the dict 
   #   debug: 
   #     var: credentials_unprotected
