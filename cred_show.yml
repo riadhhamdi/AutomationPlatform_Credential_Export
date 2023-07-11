@@ -15,3 +15,6 @@
       credentials_unprotected: "{{credentials_unprotected | combine( { mycred: unprotected_data } )}}"
     vars: 
       unprotected_data: cred_clear.stdout | from_yaml
+  - name: show the value of the dict 
+    debug: 
+      var: credentials_unprotected
