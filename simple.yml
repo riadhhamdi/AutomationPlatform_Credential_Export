@@ -26,8 +26,17 @@
     set_fact:
       credentials_unprotected: {}
   - name: show up credential for every cred detected
-    include_tasks: cred_show.yml
+    include_tasks: retrieve_creds_values.yml
     vars:
       mycred: "{{item}}"
     loop: "{{all_credentials.json.results | map(attribute='id') | list}}"
+
+  - name: Initialize a new dict for the cleared credentials 
+    set_fact:
+      controller_credentials: []  
     
+  - name: Recreate credentials on target AAP
+    include_tasks: prepare_creds_to_apply.yml
+    vars:
+      mycred: "{{item}}"
+    loop: "{{all_credentials.json.results | map(attribute='id') | list}}"

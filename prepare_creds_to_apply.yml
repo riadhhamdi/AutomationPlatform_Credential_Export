@@ -1,0 +1,10 @@
+  - name: Initialize a new dict for the cleared credentials 
+    set_fact:
+      target_credential: {}
+  - name: Extract credential dict from the full list 
+    set_fact: 
+      raw_credential: "{{all_credentials.json.results | selectattr(id, 'equalto', mycred)}}"
+    
+  - name: display raw credential
+    debug:
+      var: raw_credential
