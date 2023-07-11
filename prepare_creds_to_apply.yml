@@ -3,7 +3,7 @@
       target_credential: {}
   - name: Extract credential dict from the full list 
     set_fact: 
-      raw_credential: "{{all_credentials.json.results | selectattr(id, 'equalto', mycred)}}"
+      raw_credential: "{{all_credentials.json.results | selectattr('id' , 'equalto', mycred)}}"
     
   - name: display raw credential
     debug:
