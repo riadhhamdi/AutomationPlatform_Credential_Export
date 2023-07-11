@@ -2,8 +2,6 @@
 creds:
 {% for cred in all_creds_data.results %}
   - cred_id: {{cred.item}}
-    credential_type: {{cred.credential_type}}
-    name: {{cred.name}}
     data: 
       {{cred.stdout}}
 {% endfor %}
