@@ -16,7 +16,7 @@
         credential_type: raw_credential.summary_fields.credential_type.name
         inputs: "{{raw_credential.inputs | default({}) | combine(unencrypted_inputs)}}"
     vars:
-      unencrypted_inputs: "{{ credentials_unprotected[mycred] | from_yaml }}"
+      unencrypted_inputs: "{{ dict(credentials_unprotected[mycred]) }}"
   - name: Show the credential to be created 
     debug:
       var: target_credential
