@@ -25,7 +25,7 @@
       CRED_ID: "{{item}}"
     loop: "{{all_credentials.json.results | map(attribute='id') | list}}"
     register: all_creds_data
-    ignore_errors: true 
+    failed_when: false 
   - name: Get all credentials sensitive data
     debug: 
       var: all_creds_data.results | map(attribute='stdout_lines') | list 
