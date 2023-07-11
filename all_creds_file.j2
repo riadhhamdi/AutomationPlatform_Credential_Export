@@ -1,5 +1,5 @@
 ## Ansible Generated 
 {% for cred in all_creds_data.results %}
 - cred_id: {{cred.item}}
-  data: {{cred.stdout}}
+  data: {{cred.stdout | to_yaml}}
 {% endfor %}
