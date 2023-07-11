@@ -13,4 +13,4 @@
     ignore_errors: true
   - name: Get the specified cred 3
     debug: 
-      var: cred_clear.stdout | from_yaml 
+      var: (cred_clear.stdout | from_yaml).password
