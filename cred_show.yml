@@ -19,3 +19,6 @@
   - name: show the value of the dict 
     debug: 
       var: credentials_unprotected
+  - name: get a specific password 
+    debug: 
+      var: credentials_unprotected.5.password
