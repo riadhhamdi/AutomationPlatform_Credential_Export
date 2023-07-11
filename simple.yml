@@ -1,4 +1,6 @@
 - hosts: localhost 
+  vars:
+    test: "hello"
   tasks:
   - name: trigger all the credentials 
     uri: 
